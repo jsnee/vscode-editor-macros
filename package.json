@@ -1,8 +1,13 @@
 {
     "name": "vscode-editor-macros",
     "displayName": "vscode-editor-macros",
-    "description": "",
+    "description": "Visual Studio Code extension that provides a lightweight solution to VSCode's lack of custom macros.",
+    "publisher": "jpsnee",
     "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jsnee/vscode-editor-macros"
+    },
     "engines": {
         "vscode": "^1.42.0"
     },

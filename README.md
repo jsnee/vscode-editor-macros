@@ -39,6 +39,7 @@ This extension also leverages string replacement as another way to design macros
             "args": {
                 "regex": true,
                 "replaceAll": true,
+                "multiline": false,
                 "searchPattern": "\t",
                 "replacePattern": "    "
             }
@@ -46,7 +47,7 @@ This extension also leverages string replacement as another way to design macros
     }
 }
 ```
-Note: `"regex"` and `"replaceAll"` aren't required, but will both default to `false` if not provided. If `"regex"` is true, the `"searchPattern"` will be treated as a regular expression.
+Note: `"regex"`, `"replaceAll"`, and `"multiline"` aren't required, but will both default to `false` if not provided. If `"regex"` is true, the `"searchPattern"` will be treated as a regular expression. `"multiline"` enables the multiline flag.
 
 ### Multiple Typed Macros
 If you want to chain multiple string replacements or combine commands with string replacements, you can use the "third" macro type: `"multiple"`:

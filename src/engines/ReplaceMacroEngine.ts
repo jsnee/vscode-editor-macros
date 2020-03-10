@@ -5,12 +5,14 @@ import { window, Range } from "vscode";
 export class ReplaceMacroEngine implements IMacroEngine {
     private readonly _regex: boolean;
     private readonly _replaceAll: boolean;
+    private readonly _isMultiline: boolean;
     private readonly _searchPattern: string;
     private readonly _replacePattern: string;
 
     constructor(args: MacroDefinitionArguments) {
         this._regex = args["regex"] || false;
         this._replaceAll = args["replaceAll"] || false;
+        this._isMultiline = args["multiline"] || false;
         this._searchPattern = args["searchPattern"];
         this._replacePattern = args["replacePattern"];
     }
@@ -23,7 +25,7 @@ export class ReplaceMacroEngine implements IMacroEngine {
         const text = editor.document.getText();
         var search: string | RegExp;
         if (this._regex) {
-            search = new RegExp(this._searchPattern);
+            search = new RegExp(this._searchPattern, this._isMultiline ? "m" : undefined);
         } else {
             search = this._searchPattern;
         }

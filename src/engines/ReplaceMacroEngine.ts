@@ -25,12 +25,19 @@ export class ReplaceMacroEngine implements IMacroEngine {
         const text = editor.document.getText();
         var search: string | RegExp;
         if (this._regex) {
-            search = new RegExp(this._searchPattern, this._isMultiline ? "m" : undefined);
+            let flags = "";
+            if(this._isMultiline){
+                flags += "m";
+            }
+            if(this._replaceAll){
+                flags += "g";
+            }
+            search = new RegExp(this._searchPattern, flags !== "" ? flags : undefined);
         } else {
             search = this._searchPattern;
         }
         var result = text.replace(search, this._replacePattern);
-        if (this._replaceAll) {
+        if (this._replaceAll && !this._regex) {
             while (result.match(search)) {
                 result = result.replace(search, this._replacePattern);
             }
